@@ -1,69 +1,115 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'normalize.css/normalize.css'
+import './styles/styles.scss'
 
-const outsideParagraph = 'this came from outside'
-const printLocation = () => {
-    return 'fucntion call print';
-}
+class OnlineStore extends React.Component {
+    constructor(props) {
+        super();
+        this.handlePick = this.handlePick.bind(this);
+    }
+    handlePick() {
+        alert('clicked Add to Cart btn');
+    }
 
-let mark = 5;
-const conditional = (num) => {
-    if (num === 10) {
-        return <p>conditional rendering for true</p>
-    } else {
-        return <p>conditional rendering for false </p>
+    componentDidMount() {
+        console.log('component did mount');
+    }
+    componentDidUpdate() {
+        console.log('component did update');
+    }
+
+    render() {
+        const title = 'Store Header Component';
+        const subtitle = 'Some subtitle for good measure';
+        const storeItems = ['item one', 'item two', 'item three'];
+        return (
+            <div>
+                <Header title={title} subtitle={subtitle} />
+                <ItemList storeItems={storeItems} />
+                <ItemDetails />
+                <Action handlePick={this.handlePick}/>
+            </div>
+        );
     }
 }
 
-let counter = 0;
-
-const change = () => {
-    counter += 1;
-    renderApp();
-}
-
-let options = ['test option 1', 'test option 2'];
-
-const onTestFormSubmit = (e) => {
-    e.preventDefault();
-
-    const testOption = e.target.elements.option.value;
-
-    if (testOption) {
-        options.push(testOption);
-        e.target.elements.option.value = '';
-        renderApp();
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.title} with Navigation (TEST)</h1>
+                <h2>{this.props.subtitle} (Test)</h2>
+            </div>
+        );
     }
-    
 }
 
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+                <button onClick={this.props.handlePick}>Add To Cart</button>
+            </div>
+        )
+    }
+}
 
-const renderApp = () => {
-    const template = (
-        <div>
-            <h1>testing react</h1>
-            <p>{outsideParagraph}</p>
-            <p>{printLocation()}</p>
-            <h2>This {counter} will change whenever function change is called</h2>
-            <button disabled={counter > 100} onClick={change}>Add 1</button>
-            {conditional(mark)}
-            <form onSubmit={onTestFormSubmit}>
-                <input type="text" name="option" />
-                <button>Add test form option</button>
-            </form>
-            {options.map((option) => {
-                return <p key={options.indexOf(option)}>{option}</p>
-            })}
-            
-        </div>
-    );
-    ReactDOM.render(template, appRoot);
-    
-};
+class ItemList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.clearItems = this.clearItems.bind(this);
+    }
+    clearItems() {
+        console.log(this.props.storeItems)
+        //alert('clicked on remove all items from cart btn');
+    }
+    render() {
+        return (
+            <div>
+                {
+                   this.props.storeItems.map((item) => {
+                       return <Item key={item} itemText={item} />
+                   }) 
+                }
+                <button onClick={this.clearItems}>Clear items from Test Basket</button>
+            </div>
+        )
+    }
+}
 
-let appRoot = document.getElementById('app');
-renderApp();
+class ItemDetails extends React.Component {
+    handleSeeComponent(e) {
+        e.preventDefault();
+        const item = e.target.elements.itemDetail.value.trim();
 
+        if (item) {
+            alert(item);
+        }
+    }
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleSeeComponent}>
+                    <input type="text" name="itemDetail" />
+                    <button>See details of an item</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+class Item extends React.Component {
+    render() {
+        return (
+            <div>
+                {this.props.itemText}
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<OnlineStore />, document.getElementById('app'));
 
 
 

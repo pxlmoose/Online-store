@@ -17,6 +17,13 @@ module.exports = {
                     plugins: ['transform-object-rest-spread']
                 }
             }
+        }, {
+            test: /\.s?css$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
         }]
     },
     devServer: {

@@ -1,5 +1,9 @@
-$test-color: red;
+$test-color: blue;
 
 * {
     color: $test-color;
+}
+
+.is-active {
+    font-weight: bold;
 }

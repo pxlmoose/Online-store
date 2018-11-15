@@ -1,0 +1,1 @@
+// set here reducer for your text filter. Use default state etc, remember to export 

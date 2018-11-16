@@ -1,22 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './routers/AppRouter';
 import { Provider } from 'react-redux';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import { addItem } from './actions/items';
+import { setTextFilter } from './actions/filters';
+import getVisibleItems from './selectors/items';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 
-// const store = configureStore(); 
+const store = configureStore(); 
 
-// const jsx = (
-//     <Provider store={store}>
-//         <AppRouter />
-//     </Provider>
-// )
-//this won't work untill you write this function in configureStore.js
+store.dispatch(addItem({ name: 'cool design'}));
+store.dispatch(addItem({ name: 'fancy design'}));
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+setTimeout(() => {
+    store.dispatch(setTextFilter('butts'));
+}, 5000);
+
+const state =  store.getState();
+const visibleItems = getVisibleItems(state.items, state.filters);
+console.log(visibleItems);
 
 
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+)
 
+
+ReactDOM.render(jsx, document.getElementById('app'));
+
+ 
 
 

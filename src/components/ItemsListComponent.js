@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ItemComponent from './ItemComponent';
+import getVisibleItems from '../selectors/items';
+import ItemsListFilter from './ItemsListFilterComponent';
 
 const ItemsListComponent = (props) => (
     <div>
         <h1>Item List</h1>
-        {props.items.length}
-        {props.filters.text}
+        <ItemsListFilter />
+        {props.items.map((item) => {
+            return <ItemComponent key={item.id} {...item} />
+        })}
     </div>
 );
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items,
-        filters: state.filters
+        items: getVisibleItems(state.items, state.filters)
     }
 };
 

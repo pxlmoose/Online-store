@@ -1,9 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { removeItem } from '../actions/items';
 
-const ItemComponent = (props) => (
+const ItemComponent = ({ name, description, price, dispatch, id }) => (
     <div>
-        <p>Individual item with id of {props.match.params.id} </p>
+        <h3>{name}</h3>
+        <p>{description} - {price}</p>
+        <button onClick={() => {
+            dispatch(removeItem({ id }))
+        }}>Remove Item</button>
     </div>
 );
 
-export default ItemComponent;
+export default connect()(ItemComponent);   

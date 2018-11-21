@@ -4,19 +4,17 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addItem } from './actions/items';
-import { setTextFilter } from './actions/filters';
 import getVisibleItems from './selectors/items';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 
 const store = configureStore(); 
 
-store.dispatch(addItem({ name: 'cool design'}));
-store.dispatch(addItem({ name: 'fancy design'}));
+store.dispatch(addItem({ name: 'cool design', description: 'this is the cool design', price: 1000}));
+store.dispatch(addItem({ name: 'fancy design', description: 'fancy and pricy design', price: 1000000}));
+store.dispatch(addItem({ name: 'lazy design', description: 'lazy and repetetive', price: 50000}));
 
-setTimeout(() => {
-    store.dispatch(setTextFilter('butts'));
-}, 5000);
+
 
 const state =  store.getState();
 const visibleItems = getVisibleItems(state.items, state.filters);

@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ItemComponent from './ItemComponent';
+import SingleItem from './SingleItem';
 import getVisibleItems from '../selectors/items';
-import ItemsListFilter from './ItemsListFilterComponent';
+import ItemsListFilter from './ItemsListFilter';
 
-const ItemsListComponent = (props) => (
+const ItemsList = (props) => (
     <div>
         <h1>Item List</h1>
         <ItemsListFilter />
         {props.items.map((item) => {
-            return <ItemComponent key={item.id} {...item} />
+            return <SingleItem key={item.id} {...item} />
         })}
     </div>
 );
@@ -20,5 +20,5 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(ItemsListComponent);
+export default connect(mapStateToProps)(ItemsList);
 

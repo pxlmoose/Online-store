@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { removeItem } from '../actions/items';
 
-const ItemComponent = ({ name, description, price, dispatch, id }) => (
+const SingleItem = ({ name, description, price, dispatch, id }) => (
     <div>
-        <h3>{name}</h3>
+        <Link to={`/item/${id}`}>
+            <h3>{name}</h3>
+        </Link>
         <p>{description} - {price}</p>
         <button onClick={() => {
             dispatch(removeItem({ id }))
@@ -12,4 +15,5 @@ const ItemComponent = ({ name, description, price, dispatch, id }) => (
     </div>
 );
 
-export default connect()(ItemComponent);   
+
+export default connect()(SingleItem);   

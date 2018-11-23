@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
-import ItemsListComponent from '../components/ItemsListComponent';
-import ItemComponent from '../components/ItemComponent';
+import ItemsList from '../components/ItemsList';
+import SingleItem from '../components/SingleItem';
 import NotFoundPage from '../components/NotFoundPage';
-import NavigationComponent from '../components/NavigationComponent';
-import ContactComponent from '../components/ContactComponent';
-import AboutComponent from '../components/AboutComponent';
-import CartComponent from '../components/CartComponent';
-import LoginComponent from '../components/LoginCoponent';
-import FooterComponent from '../components/FooterComponent';
-import CheckoutComponent from '../components/CheckoutComponent';
+import Navigation from '../components/Navigation';
+import ContactPage from '../components/ContactPage';
+import AboutPage from '../components/AboutPage';
+import Cart from '../components/Cart';
+import LoginPage from '../components/LoginPage';
+import Footer from '../components/Footer';
+import Checkout from '../components/Checkout';
+import ViewItem from '../components/ViewItem';
 
 
 
@@ -18,18 +19,18 @@ import CheckoutComponent from '../components/CheckoutComponent';
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <NavigationComponent />
+            <Navigation />
             <Switch>
-                <Route path="/" component={ItemsListComponent} exact={true}/>
-                <Route path="/contact" component={ContactComponent}/>
-                <Route path="/about" component={AboutComponent}/>
-                <Route path="/cart" component={CartComponent}/>
-                <Route path="/login" component={LoginComponent}/>
-                <Route path="/item/:id" component={ItemComponent} />
-                <Route path="/checkout" component={CheckoutComponent} />
+                <Route path="/" component={ItemsList} exact={true}/>
+                <Route path="/contact" component={ContactPage}/>
+                <Route path="/about" component={AboutPage}/>
+                <Route path="/cart" component={Cart}/>
+                <Route path="/login" component={LoginPage}/>
+                <Route path="/item/:id" component={ViewItem} />
+                <Route path="/checkout" component={Checkout} />
                 <Route component={NotFoundPage} />
             </Switch>
-            <FooterComponent />
+            <Footer />
         </div>
     </BrowserRouter>
 );

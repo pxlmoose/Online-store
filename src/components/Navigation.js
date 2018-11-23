@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavigationComponent = () => (
+const Navigation = () => (
     <header>
         <h1>this is fixed to top navigation header</h1>
         <NavLink to="/" activeClassName="is-active" exact={true}>Home</NavLink>
@@ -12,4 +12,4 @@ const NavigationComponent = () => (
     </header>
 );
 
-export default NavigationComponent;
+export default Navigation;

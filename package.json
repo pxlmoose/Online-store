@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Jan Nowicki",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.1",
+    "express": "^4.16.4",
     "live-server": "^1.2.0",
     "node-sass": "^4.10.0",
     "normalize.css": "^8.0.0",

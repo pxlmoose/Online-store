@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SingleItem from './SingleItem';
 import getVisibleItems from '../selectors/items';
 import ItemsListFilter from './ItemsListFilter';
+import PriceSummary from './PriceSummary';
 
 const ItemsList = (props) => (
     <div>
@@ -11,6 +12,7 @@ const ItemsList = (props) => (
         {props.items.map((item) => {
             return <SingleItem key={item.id} {...item} />
         })}
+        <PriceSummary />
     </div>
 );
 

@@ -1,7 +1,7 @@
-const totalPrice = (items) => {
+const selectTotalPrice = (items) => {
     return items
-   .map((item) => item.amount)
+   .map((item) => item.price)
    .reduce((sum, value) => sum + value, 0);
 }
 
-export default totalPrice;
+export default selectTotalPrice;

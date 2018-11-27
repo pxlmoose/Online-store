@@ -5,8 +5,11 @@ import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addItem } from './actions/items';
 import getVisibleItems from './selectors/items';
-import 'normalize.css/normalize.css'
-import './styles/styles.scss'
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import './firebase/firebase';
+
+import './archive dump code/promises';
 
 const store = configureStore(); 
 

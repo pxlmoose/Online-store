@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import ItemsList from '../components/ItemsList';
-import SingleItem from '../components/SingleItem';
+import SingleListItem from '../components/SingleListItem';
 import NotFoundPage from '../components/NotFoundPage';
 import Navigation from '../components/Navigation';
 import ContactPage from '../components/ContactPage';

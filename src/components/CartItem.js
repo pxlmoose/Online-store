@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeItem } from '../actions/items';
 
-const SingleItem = ({ name, description, price, dispatch, id }) => (
+const CartItem = ({ name, description, price, dispatch, id }) => (
     <div>
         <Link to={`/item/${id}`}>
             <h3>{name}</h3>
@@ -16,4 +16,4 @@ const SingleItem = ({ name, description, price, dispatch, id }) => (
 );
 
 
-export default connect()(SingleItem);   
+export default connect()(CartItem);   

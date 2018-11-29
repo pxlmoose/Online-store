@@ -8,7 +8,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import './firebase/firebase';
 
-import './archive dump code/promises';
+
 
 const store = configureStore(); 
 

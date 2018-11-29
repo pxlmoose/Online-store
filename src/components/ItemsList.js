@@ -12,8 +12,7 @@ const ItemsList = (props) => (
         {props.items.map((item) => {
             return <SingleListItem key={item.id} {...item} />
         })}
-
-    </div>
+</div>
 );
 
 const mapStateToProps = (state) => {

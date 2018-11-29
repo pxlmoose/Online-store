@@ -10,6 +10,8 @@ const itemsReducer = (state = itemsReducerDefaultState, action) => {
             ];
         case 'REMOVE_ITEM':
             return state.filter(({ id }) => id !== action.id);
+        case 'SET_ITEMS':
+            return action.items;
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ItemForm from './ItemForm';
-import { addItem } from '../actions/items';
+import { startAddItem } from '../actions/items';
 
 const ViewItem = (props) => {
     //console.log(props);
@@ -12,9 +12,8 @@ const ViewItem = (props) => {
                 item={props.item}
             />
             <button onClick={() => {
-                // props.dispatch(addItem(item));
-                // props.history.push('/');
-                console.log(props.item);
+                props.dispatch(startAddItem(props.item));
+                props.history.push('/');
             }}>Add item</button>
         </div>
     );

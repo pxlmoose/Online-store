@@ -24,6 +24,10 @@ store.dispatch(startSetItems()).then(() => {
     ReactDOM.render(jsx, document.getElementById('app'));
 })
 
+// .then(() => {
+//     store.dispatch(startSetCartItems());
+// })
+
 
 
  

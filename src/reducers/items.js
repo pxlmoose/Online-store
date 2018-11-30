@@ -12,6 +12,8 @@ const itemsReducer = (state = itemsReducerDefaultState, action) => {
             return state.filter(({ id }) => id !== action.id);
         case 'SET_ITEMS':
             return action.items;
+        case 'SET_CART_ITEMS':
+            return action.cartItem;
         default:
             return state;
     }

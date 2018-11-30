@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeItem } from '../actions/items';
+import { startRemoveItem } from '../actions/items';
 
 const CartItem = ({ name, description, price, dispatch, id }) => (
     <div>
@@ -10,7 +10,7 @@ const CartItem = ({ name, description, price, dispatch, id }) => (
         </Link>
         <p>{description} - {price}</p>
         <button onClick={() => {
-            dispatch(removeItem({ id }))
+            dispatch(startRemoveItem({ id }))
         }}>Remove Item</button>
     </div>
 );

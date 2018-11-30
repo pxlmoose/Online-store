@@ -21,7 +21,7 @@ export const startAddItem = (itemData = {}) => {
         } = itemData;
         const item = { name, description, price };
 
-        database.ref('items/cart').push(item).then((ref) => {
+        database.ref('cart').push(item).then((ref) => {
             dispatch(addItem({
                 id: ref.key,
                 ...item
@@ -30,13 +30,25 @@ export const startAddItem = (itemData = {}) => {
     };
 };
 
+
+
 // REMOVE_ITEM_FROM_CART
 export const removeItem = ({ id } = {}) => ({
     type: 'REMOVE_ITEM',
     id
 });
 
-// FETCH_DATA_FROM_DATABASE
+export const startRemoveItem = ({ id } = {}) => {
+    return (dispatch) => {
+        return database.ref(`cart/${id}`).remove().then(() => {
+            dispatch(removeItem({ id }))
+        });
+    };
+};
+
+
+
+// FETCH_ALL_DATA_FROM_DATABASE
 export const setItems = (items) => ({
     type: 'SET_ITEMS',
     items
@@ -58,4 +70,31 @@ export const startSetItems = () => {
         });
     };
 };
+
+///------MAYBE THIS-------///
+
+// FETCH_CART_DATA_FROM_DATABASE
+
+// export const setCartItems = (cartItems) => ({
+//     type: 'SET_CART_ITEMS',
+//     cartItems
+// });
+
+// export const startSetCartItems = () => {
+//     return (dispatcch) => {
+//         return database.ref('cart').once('value').then((snapshot) => {
+//             const cartItems = [];
+
+//             snapshot.forEach((childSnapshot) => {
+//                 cartItems.push({
+//                     id: childSnapshot.key,
+//                     ...childSnapshot.val()
+//                 });
+//             });
+
+//             dispatch(setCartItems(cartItems));
+//         });
+//     };
+// };
+
 

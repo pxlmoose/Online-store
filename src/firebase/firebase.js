@@ -15,23 +15,23 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref('items').push({
-    name: 'cheap design',
-    description: 'it all the cheap and generic stuff',
-    price: 40000
-});
+// database.ref('items').push({
+//     name: 'cheap design',
+//     description: 'it all the cheap and generic stuff',
+//     price: 40000
+// });
 
-database.ref('items').push({
-    name: 'fancy design',
-    description: 'all fancy and flashy stuff',
-    price: 2220000
-});
+// database.ref('items').push({
+//     name: 'fancy design',
+//     description: 'all fancy and flashy stuff',
+//     price: 2220000
+// });
 
-database.ref('items').push({
-    name: 'lazy design',
-    description: 'done 1 minute before dead-line',
-    price: 500
-});
+// database.ref('items').push({
+//     name: 'lazy design',
+//     description: 'done 1 minute before dead-line',
+//     price: 500
+// });
 
 export { firebase, database as default };
 

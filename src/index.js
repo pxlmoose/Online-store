@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import { startSetItems } from './actions/items';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 
 
 
@@ -27,6 +27,14 @@ store.dispatch(startSetItems()).then(() => {
 // .then(() => {
 //     store.dispatch(startSetCartItems());
 // })
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log('logged in');
+    } else {
+        console.log('logged out');
+    }
+});
 
 
 

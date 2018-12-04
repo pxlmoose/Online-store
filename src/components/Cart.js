@@ -7,7 +7,7 @@ import CartItem from './CartItem';
 const Cart = (props) => (
     <div>
         <h1>Items in you cart</h1> 
-        {props.items.map((item) => {
+        {props.cart.map((item) => {
             return <CartItem key={item.id} {...item} />
         })}
         <PriceSummary />
@@ -18,7 +18,7 @@ const Cart = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        cart: state.cart
     }
 };
 

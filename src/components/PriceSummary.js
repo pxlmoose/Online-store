@@ -15,7 +15,7 @@ export const PriceSummary = ({ totalPrice }) => {
 }
 
 const mapStateToProps = (state) => {
-    const visiblePrice = getVisibleItems(state.items, state.filters);
+    const visiblePrice = getVisibleItems(state.cart, state.filters);
 
     return {
         totalPrice: selectTotalPrice(visiblePrice)

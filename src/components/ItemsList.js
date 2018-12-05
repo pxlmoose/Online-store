@@ -16,6 +16,7 @@ const ItemsList = (props) => (
 );
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         items: getVisibleItems(state.items, state.filters)
     }

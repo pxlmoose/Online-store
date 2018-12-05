@@ -75,26 +75,26 @@ export const startSetItems = () => {
 
 // FETCH_CART_DATA_FROM_DATABASE
 
-// export const setCartItems = (cartItems) => ({
-//     type: 'SET_CART_ITEMS',
-//     cartItems
-// });
+export const setCart = (cart) => ({
+    type: 'SET_CART',
+    cart
+});
 
-// export const startSetCartItems = () => {
-//     return (dispatcch) => {
-//         return database.ref('cart').once('value').then((snapshot) => {
-//             const cartItems = [];
+export const startSetCart = () => {
+    return (dispatch) => {
+        return database.ref('cart').once('value').then((snapshot) => {
+            const cart = [];
 
-//             snapshot.forEach((childSnapshot) => {
-//                 cartItems.push({
-//                     id: childSnapshot.key,
-//                     ...childSnapshot.val()
-//                 });
-//             });
+            snapshot.forEach((childSnapshot) => {
+                cart.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
 
-//             dispatch(setCartItems(cartItems));
-//         });
-//     };
-// };
+            dispatch(setCart(cart));
+        });
+    };
+};
 
 

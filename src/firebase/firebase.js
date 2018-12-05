@@ -1,6 +1,7 @@
-import * as firebase from 'firebase'; // * as takes all named exports from firebase and dumps them into firebase veriable here
-
+import * as firebase from 'firebase'; 
+// * as takes all named exports from firebase and dumps them into firebase veriable here
 // Firebase originally doesn't have one default export
+
 
 const config = {
     apiKey: "AIzaSyAYIsEbLZXC4i96NIAPjvBsFgthrTr9kZY",
@@ -15,6 +16,10 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+
+// use following pattern to add new items to firebase (manual in firebase won't give them unique key),
+// comment out after item has been added to store.
 
 // database.ref('items').push({
 //     name: 'cheap design',

@@ -17,6 +17,7 @@ const Cart = (props) => (
 );
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         cart: state.cart
     }

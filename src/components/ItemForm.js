@@ -8,7 +8,7 @@ export class ItemForm extends React.Component {
         this.state = {
             name: props.item ? props.item.name : '',
             description: props.item ? props.item.description : '',
-            price: props.item ? props.item.proce : ''
+            price: props.item ? props.item.price : ''
         };
     }
 

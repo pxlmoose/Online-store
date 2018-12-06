@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startRemoveItem } from '../actions/items';
+import { startRemoveItem } from '../actions/cart';
 
 const CartItem = ({ name, description, price, dispatch, id }) => (
     <div>

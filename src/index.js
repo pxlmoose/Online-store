@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetItems } from './actions/items';
-import { startSetCart } from './actions/items';
+import { startSetCart } from './actions/cart';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import { firebase } from './firebase/firebase';
@@ -21,16 +21,14 @@ const jsx = (
 
 ReactDOM.render(<p>loading...</p>, document.getElementById('app'));
 
-store.dispatch(startSetItems()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
-});
-
-// store.dispatch(startSetCart());
-
-
-// store.dispatch(startSetItems()).then(store.dispatch(startSetCart())).then(() => {
+// store.dispatch(startSetItems()).then(() => {
 //     ReactDOM.render(jsx, document.getElementById('app'));
 // });
+
+
+store.dispatch(startSetItems()).then(store.dispatch(startSetCart())).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));
+});
 
 
 firebase.auth().onAuthStateChanged((user) => {

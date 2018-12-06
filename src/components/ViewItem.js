@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ItemForm from './ItemForm';
-import { startAddItem } from '../actions/items';
+import { startAddItem } from '../actions/cart';
 
 const ViewItem = (props) => {
-    //console.log(props);
     return (
         <div>
             <h1>Viewing single item</h1>

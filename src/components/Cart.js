@@ -13,7 +13,6 @@ const Cart = (props) => (
         <PriceSummary />
         <Link to="/checkout">Checkout</Link>
     </div>
-    //cart will be suscribed to changes in firebase
 );
 
 const mapStateToProps = (state) => {

@@ -60,3 +60,18 @@ export const startSetCart = () => {
         });
     };
 };
+
+// CLEAR_CART_DATA_AFTER_LOGOUT
+export const clearCart = () => ({
+    type: 'CLEAR_CART',
+    cart: []
+});
+
+// CLEAR_CART_AND_DATABSE_CART_AFTER_SUCCESSFUL_CHECKOUT
+export const startClearCart = () => {
+    return (dispatch) => {
+        dispatch(clearCart());
+        return database.ref('cart').set(null);
+    };
+};
+

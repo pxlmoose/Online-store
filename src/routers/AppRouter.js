@@ -11,6 +11,8 @@ import LoginPage from '../components/LoginPage';
 import Footer from '../components/Footer';
 import Checkout from '../components/Checkout';
 import ViewItem from '../components/ViewItem';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
 
@@ -24,10 +26,10 @@ const AppRouter = () => (
                 <Route path="/" component={ItemsList} exact={true}/>
                 <Route path="/contact" component={ContactPage}/>
                 <Route path="/about" component={AboutPage}/>
-                <Route path="/cart" component={Cart}/>
-                <Route path="/login" component={LoginPage}/>
+                <PrivateRoute path="/cart" component={Cart}/>
+                <PublicRoute path="/login" component={LoginPage}/>
                 <Route path="/item/:id" component={ViewItem} />
-                <Route path="/checkout" component={Checkout} />
+                <PrivateRoute path="/checkout" component={Checkout} />
                 <Route component={NotFoundPage} />
             </Switch>
             <Footer />

@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetItems } from './actions/items';
-import { startSetCart } from './actions/cart';
+import { startSetCart, clearCart } from './actions/cart';
+import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import { firebase } from './firebase/firebase';
@@ -21,19 +22,30 @@ const jsx = (
 
 ReactDOM.render(<p>loading...</p>, document.getElementById('app'));
 
-// istructions: you're going to render all list data when you open app, and load cart data when user
-// logs in
 
-store.dispatch(startSetItems()).then(store.dispatch(startSetCart())).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
-});
+let hasRendered = false;
+const renderApp = () => {
+    if (!hasRendered) {
+        ReactDOM.render(jsx, document.getElementById('app'));
+        hasRendered = true;
+    }
+}
 
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('logged in');
+        store.dispatch(login(user.uid));
+        store.dispatch(startSetItems()).then(store.dispatch(startSetCart())).then(() => {
+            renderApp();
+            history.push('/');
+        });
     } else {
-        history.push('/')
+        store.dispatch(startSetItems()).then(() => {
+            store.dispatch(logout());
+            store.dispatch(clearCart());
+            renderApp();
+            history.push('/');
+        })
     }
 });
 

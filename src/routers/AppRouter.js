@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import ItemsList from '../components/ItemsList';
-import SingleListItem from '../components/SingleListItem';
 import NotFoundPage from '../components/NotFoundPage';
 import Navigation from '../components/Navigation';
 import ContactPage from '../components/ContactPage';
@@ -12,12 +12,12 @@ import Footer from '../components/Footer';
 import Checkout from '../components/Checkout';
 import ViewItem from '../components/ViewItem';
 
-
+export const history = createHistory();
 
 
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
         <div>
             <Navigation />
             <Switch>
@@ -32,7 +32,7 @@ const AppRouter = () => (
             </Switch>
             <Footer />
         </div>
-    </BrowserRouter>
+    </Router>
 );
 
 export default AppRouter;

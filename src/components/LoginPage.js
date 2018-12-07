@@ -14,3 +14,4 @@ const mapDispatchStateToProps = (dispatch) => ({
 });
 
 export default connect (undefined, mapDispatchStateToProps)(LoginPage);
+// first undefined is for state. Since we don't need state, we use indefined and move to dispatch

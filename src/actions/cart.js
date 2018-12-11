@@ -7,7 +7,8 @@ export const addItem = (item) => ({
 });
 
 export const startAddItem = (itemData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const  {
             name = '',
             description = '',
@@ -15,7 +16,7 @@ export const startAddItem = (itemData = {}) => {
         } = itemData;
         const item = { name, description, price };
 
-        database.ref('cart').push(item).then((ref) => {
+        database.ref(`customers/${uid}/cart`).push(item).then((ref) => {
             dispatch(addItem({
                 id: ref.key,
                 ...item
@@ -31,8 +32,9 @@ export const removeItem = ({ id } = {}) => ({
 });
 
 export const startRemoveItem = ({ id } = {}) => {
-    return (dispatch) => {
-        return database.ref(`cart/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`customers/${uid}/cart/${id}`).remove().then(() => {
             dispatch(removeItem({ id }))
         });
     };
@@ -45,8 +47,9 @@ export const setCart = (cart) => ({
 });
 
 export const startSetCart = () => {
-    return (dispatch) => {
-        return database.ref('cart').once('value').then((snapshot) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`customers/${uid}/cart`).once('value').then((snapshot) => {
             const cart = [];
 
             snapshot.forEach((childSnapshot) => {
@@ -69,9 +72,10 @@ export const clearCart = () => ({
 
 // CLEAR_CART_AND_DATABSE_CART_AFTER_SUCCESSFUL_CHECKOUT
 export const startClearCart = () => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         dispatch(clearCart());
-        return database.ref('cart').set(null);
+        return database.ref(`customers/${uid}/cart`).set(null);
     };
 };
 

@@ -17,9 +17,11 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-
+//--------------------------!!!--IMPORTANT--!!!-------------------------------------
 // use following pattern to add new items to firebase (manual in firebase won't give them unique key),
 // comment out after item has been added to store.
+// also remember to change general rule of writing in to true to add new stuff, change back ot false once it's done
+
 
 // database.ref('items').push({
 //     name: 'cheap design',

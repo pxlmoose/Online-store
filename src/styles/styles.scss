@@ -1,9 +1,7 @@
-$test-color: blue;
+// import here all base scss files
 
-* {
-    color: $test-color;
-}
-
-.is-active {
-    font-weight: bold;
-}
+@import './base/settings';
+@import './base/base';
+@import './components/navigation';
+@import './components/itemsList';
+@import './components/footer';

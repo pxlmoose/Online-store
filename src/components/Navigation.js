@@ -5,8 +5,7 @@ import { startLogout } from '../actions/auth';
 
 
 export const Navigation = ({ startLogout }) => (
-    <header>
-        <h1>this is fixed to top navigation header</h1>
+    <header className="navigation">
         <NavLink to="/" activeClassName="is-active" exact={true}>Home</NavLink>
         <NavLink to="/contact" activeClassName="is-active">Contact</NavLink>
         <NavLink to="/about" activeClassName="is-active">About</NavLink>

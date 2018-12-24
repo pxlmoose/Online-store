@@ -1,0 +1,11 @@
+// here come styles that will be aplied to all elements as default
+
+* {
+    color: $test-color;
+    box-sizing: border-box;
+}
+
+.is-active {
+    font-weight: bold;
+}
+

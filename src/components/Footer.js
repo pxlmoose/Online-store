@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-    <div>
+    <div className="footer">
         <h3>This is footer</h3> 
         <p>it has copyright notice and</p>
         <p>all of social media/ platforms links</p>

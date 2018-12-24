@@ -6,7 +6,7 @@ import ItemsListFilter from './ItemsListFilter';
 
 
 const ItemsList = (props) => (
-    <div>
+    <div className="itemsList">
         <h1>Item List</h1>
         <ItemsListFilter />
         {props.items.map((item) => {
